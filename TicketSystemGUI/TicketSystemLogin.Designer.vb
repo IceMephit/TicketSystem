@@ -28,7 +28,7 @@ Partial Class TicketSystemLogin
         Me.lbPassword = New System.Windows.Forms.Label()
         Me.lbUserName = New System.Windows.Forms.Label()
         Me.txtbPassword = New System.Windows.Forms.TextBox()
-        Me.userNameDropDown = New System.Windows.Forms.ComboBox()
+        Me.txtbUserName = New System.Windows.Forms.TextBox()
         Me.SuspendLayout()
         '
         'lbLoginText
@@ -90,15 +90,14 @@ Partial Class TicketSystemLogin
         Me.txtbPassword.TabIndex = 9
         Me.txtbPassword.UseSystemPasswordChar = True
         '
-        'userNameDropDown
+        'txtbUserName
         '
-        Me.userNameDropDown.Font = New System.Drawing.Font("Verdana", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.userNameDropDown.FormattingEnabled = True
-        Me.userNameDropDown.Location = New System.Drawing.Point(134, 57)
-        Me.userNameDropDown.Name = "userNameDropDown"
-        Me.userNameDropDown.Size = New System.Drawing.Size(224, 26)
-        Me.userNameDropDown.TabIndex = 15
-        Me.userNameDropDown.Text = "User Name"
+        Me.txtbUserName.Font = New System.Drawing.Font("Verdana", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.txtbUserName.Location = New System.Drawing.Point(134, 57)
+        Me.txtbUserName.Name = "txtbUserName"
+        Me.txtbUserName.Size = New System.Drawing.Size(224, 27)
+        Me.txtbUserName.TabIndex = 15
+        Me.txtbUserName.UseSystemPasswordChar = True
         '
         'TicketSystemLogin
         '
@@ -106,7 +105,7 @@ Partial Class TicketSystemLogin
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.BackColor = System.Drawing.SystemColors.ControlDark
         Me.ClientSize = New System.Drawing.Size(388, 171)
-        Me.Controls.Add(Me.userNameDropDown)
+        Me.Controls.Add(Me.txtbUserName)
         Me.Controls.Add(Me.lbLoginText)
         Me.Controls.Add(Me.btnCancel)
         Me.Controls.Add(Me.btnLogin)
@@ -127,5 +126,5 @@ Partial Class TicketSystemLogin
     Friend WithEvents lbPassword As Label
     Friend WithEvents lbUserName As Label
     Friend WithEvents txtbPassword As TextBox
-    Friend WithEvents userNameDropDown As ComboBox
+    Friend WithEvents txtbUserName As TextBox
 End Class
