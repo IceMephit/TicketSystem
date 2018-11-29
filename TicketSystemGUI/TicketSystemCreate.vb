@@ -1,48 +1,41 @@
 ﻿Imports System.Data.SqlClient
 
 Public Class TicketSystemCreate
-    Private selectedRB As RadioButton
-    Private getSelectedRB As Button
-
-    Private Sub CreateLoad(sender As Object, e As EventArgs) Handles MyBase.Load
+    Dim rbTier As RadioButton
+    Private Sub CreateLoad(sender As Object, e As EventArgs) Handles MyBase.Load, txtDescIssue.TextChanged, Tier3.CheckedChanged, Tier2.CheckedChanged, Tier1.CheckedChanged
         Dim sqlConn As SqlConnection
+        Dim sqlCMD As SqlCommand
+        Dim sqlDataAdapter As SqlDataAdapter
+        Dim dataTable As DataTable
         sqlConn = New SqlConnection()
         sqlConn.ConnectionString = "Data Source=SERVER\\SQL;Initial Catalog=COMPUTERS;Integrated Security=True"
         sqlConn.Open()
+        sqlCMD = New SqlCommand("'tier='" + rbTier.Checked + "'description='" + txtDescIssue.Text, sqlConn);   
+        sqlDataAdapter = New SqlDataAdapter(sqlCMD)
+        dataTable = New DataTable()
+        sqlDataAdapter.Fill(dataTable)
     End Sub
 
     Public Sub InitializeRadioButtons()
         Tier1 = New System.Windows.Forms.RadioButton()
         Tier2 = New System.Windows.Forms.RadioButton()
         Tier3 = New System.Windows.Forms.RadioButton()
-        getSelectedRB = New System.Windows.Forms.Button()
-        getSelectedRB.Click += New EventHandler(getSelectedRB_Click)
     End Sub
 
-    Private Sub RB_CheckedChanged(object sender, EventArgs e)
-        If [object] Is Nothing Then
-            Throw New ArgumentNullException(NameOf([object]))
-        End If
-
-        radioBtn = sender As RadioButton
-        If (radioBtn Is null) Then
+    Private Sub RB_CheckedChanged(sender As Object, e As EventArgs)
+        If (rbTier Is null) Then
             MessageBox.Show("Please select a tier. Use Tier 1 if unsure.")
             Return
-        ElseIf (radioRtn.Checked) Then
-            selectedRadioBtn = radioBtn
-            'if t1
-            ' DB TICKET tier = 1
-            'else if t2
-            ' DB TICKET tier = 2
-            'else if t3
-            ' DB TICKET tier = 3
+        ElseIf (rbTier.Checked) Then
+            If Tier1.CheckedChanged Is True Then
+                ' Ticket is flagged as Tier 1 in DB
+            ElseIf Tier2.CheckedChanged Is True Then
+                ' Ticket is flagged as Tier 2 in DB
+            ElseIf Tier3.CheckedChanged Is True Then
+                ' Ticket is flagged as Tier 3 in DB
+            Else
+                MessageBox.Show("Please select a Tier.")
+            End If
         End If
     End Sub
-
-    Public Sub getSelectedRB_Click(object sender, EventArgs e)
-        MessageBox.Show("Radio Button selected.")
-
-    '    Private Sub RbT3_Click(sender As Object, e As EventArgs) Handles Tier3.Click
-    '    Throw New NotImplementedException()
-    '    End Sub
 End Class
