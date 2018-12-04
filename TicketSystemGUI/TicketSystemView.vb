@@ -1,13 +1,17 @@
-﻿Public Class TicketSystemView
-    Private sqlConnView(sender As Object, e As EventArgs)
+﻿Imports System.Data.SqlClient
+
+Public Class TicketSystemView
+    Private Sub CreateLoad(sender As Object, e As EventArgs) Handles MyBase.Load
         Dim sqlConn As SqlConnection
         sqlConn = New SqlConnection()
         sqlConn.ConnectionString = "Data Source=SERVER\\SQL;Initial Catalog=TICKET;Integrated Security=True"
-        sqlConn.Open()    
-End Sub
+        sqlConn.Open()
+    End Sub
+
     Private Sub ViewLoad(sender As Object, e As EventArgs) Handles MyBase.Load
         ' table: ticket
     End Sub
+
     Private Sub AllOpenChecked(sender As Object, e As EventArgs) Handles rbOpen.Click
         ' table: ticket
         ' completed: FALSE

@@ -114,8 +114,9 @@ Partial Class TicketSystemCreate
         'txtDescIssue
         '
         Me.txtDescIssue.Location = New System.Drawing.Point(23, 182)
+        Me.txtDescIssue.Multiline = True
         Me.txtDescIssue.Name = "txtDescIssue"
-        Me.txtDescIssue.Size = New System.Drawing.Size(399, 27)
+        Me.txtDescIssue.Size = New System.Drawing.Size(399, 124)
         Me.txtDescIssue.TabIndex = 8
         '
         'TicketSystemCreate
